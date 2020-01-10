@@ -1,7 +1,7 @@
 Name:           perl-TimeDate
 Version:        1.16
 Epoch:          1
-Release: 	11.1%{?dist}
+Release:        13%{?dist}
 Summary:        A Perl module for time and date manipulation
 
 Group:          Development/Libraries
@@ -9,6 +9,7 @@ License:        GPL+ or Artistic
 URL:            http://search.cpan.org/dist/TimeDate/
 Source0:   http://www.cpan.org/authors/id/G/GB/GBARR/TimeDate-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Patch0:         TimeDate-1.16-Time-zones-added-between-versions-1.16-and-2.30.patch
 
 BuildArch:      noarch
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -24,6 +25,7 @@ textual representations of points in time.
 
 %prep
 %setup -q -n TimeDate-%{version}
+%patch0 -p1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -44,6 +46,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files 
+%doc README ChangeLog
 %defattr(-,root,root,-)
 %{perl_vendorlib}/Date/
 %{perl_vendorlib}/Time/
@@ -51,6 +54,14 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jun 03 2014 Jitka Plesnikova <jplesnik@redhat.com> - 1:1.16-13
+- Package README and ChangeLog
+- Resolves: rhbz#993222
+
+* Tue Apr 22 2014 Jitka Plesnikova <jplesnik@redhat.com> - 1:1.16-12
+- Add missing AK timezones
+- Resolves: rhbz#993222
+
 * Thu Dec 03 2009 Dennis Gregorovic <dgregor@redhat.com> - 1:1.16-11.1
 - Rebuilt for RHEL 6
 
