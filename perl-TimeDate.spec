@@ -1,7 +1,7 @@
 Name:           perl-TimeDate
 Version:        2.30
 Epoch:          1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Perl module for time and date manipulation
 Group:          Development/Libraries
 License:        GPL+ or Artistic
@@ -54,6 +54,9 @@ make test
 %{_mandir}/man3/*.3*
 
 %changelog
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1:2.30-2
+- Mass rebuild 2013-12-27
+
 * Tue Feb 19 2013 Petr Šabata <contyk@redhat.com> - 1:2.30-1
 - 2.30 bump
 - Fix the buildtime dependencies
